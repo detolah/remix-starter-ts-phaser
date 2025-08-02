@@ -84,6 +84,68 @@ npm run dev
 3. The game opens in your phone's browser
 4. Test the touch controls and aspect ratio
 
+<details>
+<summary><strong>📦 Porting an Existing Game (Click to expand)</strong></summary>
+
+If you have an existing game that you want to port to this starter template then follow these steps:
+
+### Step 1: Complete the Quick Start Setup
+Follow the Quick Start steps above to set up the template first.
+
+### Step 2: Prepare Your Existing Game Code
+1. Create a new folder in the project root called `src_prev` (as a sibling to the `src` folder):
+   ```bash
+   mkdir src_prev
+   ```
+
+2. Copy all your existing game files into the `src_prev` folder:
+   ```
+   your-project/
+   ├── src/                    # New template structure
+   ├── src_prev/           # Your existing game code
+   │   ├── scenes/
+   │   ├── objects/
+   │   ├── assets/
+   │   └── ... (all your existing files)
+   └── ...
+   ```
+
+### Step 3: Ask Your LLM Assistant to Help Migrate
+Once your existing code is in the `src_prev` folder, ask your AI assistant (like Claude Code) to help you migrate:
+
+> "I have an existing Phaser.js game in the `src_prev` folder that I want to port to this Remix template. Please help me migrate the code into the proper `src` structure, ensuring it works with the 5:9 aspect ratio and Remix platform requirements. Please analyze my existing game structure and guide me through the migration process."
+
+### ⚠️ Important Migration Reality Check:
+**Things WILL break during migration!** This is completely normal and expected. Game porting is an iterative process that requires multiple rounds of fixes:
+
+- **Expect compilation errors** - TypeScript and build issues are common
+- **Expect runtime crashes** - Games may not start immediately after migration
+- **Expect visual/gameplay issues** - Aspect ratio changes affect game layout
+- **Be prepared for multiple LLM conversations** - You'll need to ask follow-up questions like:
+  - "Fix this TypeScript error: [paste error]"
+  - "The game crashes with this error: [paste error]"
+  - "Help me adjust the UI layout for 5:9 aspect ratio"
+  - "My touch controls aren't working, can you help?"
+
+**Migration is a collaborative process** - Plan to spend time working with your AI assistant to resolve issues step by step. Don't expect a perfect one-shot migration.
+
+### Migration Considerations:
+- **Aspect Ratio**: Your game will need to adapt to the 5:9 mobile format
+- **Asset Loading**: Assets may need to be restructured for the build process
+- **Phaser Imports**: Remove any Phaser imports since it's loaded globally via CDN
+- **Platform Integration**: Add Remix SDK integration for platform features
+- **Mobile Optimization**: Ensure touch controls and mobile performance
+
+### Step 4: Clean Up
+After successful migration, you can remove the `src_prev` folder:
+```bash
+rm -rf src_prev
+```
+
+**💡 Pro Tip**: Keep your original game backup in a separate location until you're confident the migration is complete and working properly.
+
+</details>
+
 ## Customizing Your Game
 
 ### Remove the Demo Content
