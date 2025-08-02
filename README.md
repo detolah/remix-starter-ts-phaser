@@ -1,132 +1,195 @@
-# Farcade Game Template - Phaser.js + TypeScript
+# Remix Game Template - Phaser.js + TypeScript
 
 ## Overview
 
-This is a template for creating a game for the Farcade platform using TypeScript. It provides a structured foundation with Phaser.js game framework integration and the Farcade SDK for building mobile-first HTML5 games.
+This is a template for creating games for the Remix platform using TypeScript and Phaser.js. It provides a structured foundation with a mobile-optimized 5:9 aspect ratio, hot-reload development server, and the Remix SDK for building HTML5 games.
 
 ## Features
 
-- 📱 Mobile-first design with 5:8 aspect ratio
-- 🎮 Phaser.js game framework integration
+- 📱 Mobile-first design with **5:9 aspect ratio** (optimized for vertical mobile screens)
+- 🎮 Phaser.js game framework integration (loaded via CDN)
 - 🔧 TypeScript support for type-safe development
-- 🔄 Hot-reload development server (port 3000) with QR code for mobile testing
-- 📦 Optimized build process for Farcade platform
+- 🔄 Hot-reload development server with QR code for mobile testing
+- 📦 Optimized build process for Remix platform
 - 🏗️ Organized project structure for game development
-- 🎨 Pre-configured game scene and utilities
+- 🎨 Pre-configured game scene with bouncing balls demo
+- 🛡️ Safe setup script with protection against accidental data loss
 
-## Prerequisites
+## What You Need Before Starting
 
-- Node.js (LTS version recommended)
-- npm (comes with Node.js) or yarn
+### For Complete Beginners:
+1. **Node.js** - Download from [nodejs.org](https://nodejs.org) (choose the LTS version)
+   - This includes `npm` (package manager) automatically
+   - On Windows: Run the installer and follow the setup wizard
+   - On Mac: Download the installer or use `brew install node`
+   - On Linux: Use your package manager (e.g., `sudo apt install nodejs npm`)
+
+2. **A Code Editor** - We recommend:
+   - [Visual Studio Code](https://code.visualstudio.com) (free, beginner-friendly)
+   - [Cursor](https://cursor.sh) (VS Code with built-in AI assistance)
+
+3. **Basic Terminal/Command Line Knowledge**:
+   - Windows: Use Command Prompt or PowerShell
+   - Mac/Linux: Use Terminal
+   - You'll need to navigate to folders and run commands
 
 ## ⚠️ Important Notes
 
-- This template loads Phaser.js from a CDN within `index.html`. Consequently, Phaser is globally available and does not need to be installed as a project dependency or imported into source files. AI code generation tools might attempt to add Phaser imports; **These attempts will break your game and should be removed.**
+- **Phaser.js is loaded from CDN**: The game framework is loaded in `index.html`, so Phaser is globally available. **Never add Phaser imports** to your TypeScript files - this will break your game.
+- **Mobile-First**: This template is designed for vertical mobile games with a 5:9 aspect ratio.
+- **One-Time Setup**: The setup command can only be run once per project for safety.
 
-## Setup
+## Quick Start (Step-by-Step)
 
-1. Clone this repository
-2. Do a find and replace for `GAME_NAME` with your game's name
-3. Update the package.json with your game details
-
-## Development
-
-Install dependencies and run the development server:
-
+### Step 1: Get the Template
 ```bash
-npm install
+# Option A: Clone with git (if you have git installed)
+git clone https://github.com/InsideTheSim/remix-starter-ts-phaser my-game-name
+cd my-game-name
+
+# Option B: Download as ZIP
+# Download the ZIP file from GitHub, extract it, and open Terminal/Command Prompt in that folder. Donwnload available at:
+https://github.com/InsideTheSim/remix-starter-ts-phaser
+```
+
+### Step 2: Run Setup (IMPORTANT - Only Run Once!)
+```bash
+npm run setup
+```
+
+**What this does:**
+- Detects which package manager you're using (npm, yarn, pnpm, or bun)
+- Removes the template's git history safely
+- Installs all required dependencies
+- Creates a fresh git repository with your first commit
+- Removes the safety marker file
+
+**⚠️ Safety Warning:** This command includes the `.is_fresh` file check and will only run on a fresh template. If the file is missing, the command will fail to prevent accidental data loss.
+
+### Step 3: Start Development
+```bash
 npm run dev
 ```
 
-This will:
+**What happens:**
+- Development server starts at `http://localhost:3000`
+- A QR code appears in your terminal for mobile testing
+- The browser opens automatically
+- You'll see "Remix Server Test" with colorful bouncing balls
+- File changes trigger automatic browser refresh
 
-- Start a development server at `http://localhost:3000`
-- Generate a QR code for mobile testing on the same network
-- Enable hot-reload for quick development iterations
+### Step 4: Test on Your Phone
+1. Make sure your phone is on the same Wi-Fi network as your computer
+2. Scan the QR code that appears in your terminal
+3. The game opens in your phone's browser
+4. Test the touch controls and aspect ratio
 
-## Game Development Guide
+## Customizing Your Game
 
-### Adding Game Objects
+### Remove the Demo Content
+When you're ready to build your actual game, ask an AI assistant (like Claude Code):
 
-1. Create new game objects in the `src/objects/` directory
-2. Objects can be players, enemies, items, or any interactive game elements
-3. Extend Phaser game objects as needed
+> "Please remove the bouncing balls demo and give me a blank game scene to start building my game."
 
-### Creating Scenes
+### Project Structure Explained
+```
+your-game/
+├── .is_fresh              # Safety marker (removed after setup)
+├── index.html             # Main HTML file - loads Phaser and Remix SDK
+├── package.json           # Project info and available commands
+├── src/                   # Your game code goes here
+│   ├── main.ts           # Game entry point - creates Phaser game
+│   ├── config/
+│   │   └── GameSettings.ts # Game settings (canvas size, debug mode, etc.)
+│   ├── scenes/
+│   │   └── GameScene.ts   # Main game scene (currently has demo balls)
+│   ├── utils/
+│   │   └── RemixUtils.ts  # Remix platform integration
+│   └── types.ts          # TypeScript type definitions
+├── scripts/               # Build and development scripts
+└── dist/                 # Built game files (created when you run build)
+```
 
-1. Use `src/scenes/GameScene.ts` as a template
-2. Add new scenes in the `src/scenes/` directory
-3. Configure scene transitions in your game flow
+### Key Files to Understand:
+- **`src/main.ts`**: Creates the Phaser game with your settings
+- **`src/scenes/GameScene.ts`**: Where your game logic lives
+- **`src/config/GameSettings.ts`**: Adjust canvas size, debug mode, etc.
+- **`index.html`**: Loads Phaser and Remix SDK, sets up the game container
 
-### Implementing Game Systems
+## Available Commands
 
-1. Add game systems in `src/systems/` (e.g., collision detection, scoring)
-2. Keep systems modular and focused on specific functionality
-3. Import and initialize systems in relevant scenes
+```bash
+npm run setup    # ⚠️ ONLY RUN ONCE - Sets up fresh project
+npm run dev      # Start development server (most common)
+npm run dev:3001 # Start server on port 3001 (if 3000 is busy)
+npm run dev:any  # Start server on random available port
+npm run build    # Build for production (creates dist/index.html)
+npm run preview  # Preview the built game locally
+```
 
-### Configuration
+## Common Development Workflow
 
-1. Update `src/config/GameSettings.ts` for game-specific settings
-2. Modify `vite.config.ts` for build customization if needed
+1. **Start Development**: `npm run dev`
+2. **Edit Code**: Make changes in `src/` folder
+3. **See Changes**: Browser refreshes automatically
+4. **Test on Mobile**: Scan QR code with phone
+5. **Build for Production**: `npm run build` when ready
+6. **Deploy**: Copy contents of `dist/index.html` to Remix platform
 
-## Production
+## Troubleshooting
 
-Build the game for production:
+### Common Issues:
 
+**"Command not found: npm"**
+- Install Node.js from [nodejs.org](https://nodejs.org)
+- Restart your terminal after installation
+
+**"npm run setup fails"**
+- Make sure you're in the correct folder (should contain `package.json`)
+- Check that the `.is_fresh` file exists (if missing, you may have already run setup)
+
+**"Port 3000 is already in use"**
+- Use `npm run dev:3001` or `npm run dev:any` for different ports
+- Or stop other servers using port 3000
+
+**"Game doesn't load on mobile"**
+- Ensure your phone and computer are on the same Wi-Fi network
+- Try refreshing the page or scanning the QR code again
+- Check that no firewall is blocking the connection
+
+**"TypeScript errors about Phaser"**
+- Never import Phaser in your TypeScript files
+- Phaser is loaded globally via CDN in `index.html`
+- Remove any `import Phaser from 'phaser'` lines
+- You can ask your LLM to resolve this for you
+
+### Building for Production
 ```bash
 npm run build
 ```
+This creates `dist/index.html` - a single file containing your entire game ready for Remix deployment.
 
-This generates an optimized `dist/index.html` file ready for the Farcade platform.
+## Deployment to Remix
 
-## Deploying
+1. **Build**: Run `npm run build`
+2. **Copy**: Open `dist/index.html` and copy all contents
+3. **Paste**: Paste into Remix platform
+4. **Test**: Verify everything works on the platform
+5. **Publish**: Release your game to players
 
-1. Build your game using `npm run build`
-2. Find the generated `index.html` file in the `dist` directory
-3. Copy and paste the contents into the Farcade platform
-4. Test thoroughly on the platform before publishing
+## What's Included
 
-## Project Structure
+- **Phaser**: HTML game framework
+- **TypeScript**: Type-safe development
+- **Vite**: Fast build tool and dev server
+- **Remix SDK**: Platform integration
+- **Mobile optimization**: 5:9 aspect ratio with proper scaling
+- **Development tools**: QR codes, hot reload, build scripts
 
-```
-.
-├── dist/                # Production build output (generated after build)
-│   └── index.html
-├── index.html           # Main HTML file, loads Phaser and Farcade SDK
-├── package.json         # Project metadata and scripts
-├── scripts/             # Build script
-│   └── build.js
-├── src/                 # Main source code
-│   ├── main.ts          # Entry point for the game
-│   ├── types.ts         # Shared TypeScript types
-│   ├── config/          # Game configuration files
-│   │   └── GameSettings.ts
-│   ├── objects/         # Game object definitions such as Player, Enemy, etc. (empty by default)
-│   ├── scenes/          # Game scenes
-│   │   └── GameScene.ts
-│   ├── systems/         # Game systems such as Collisions, Environment, etc. (empty by default)
-│   └── utils/           # Utility functions (Shared utilities used throughout multiple files)
-│       └── FarcadeUtils.ts
-├── tsconfig.json        # TypeScript configuration
-├── vite.config.ts       # Vite build tool configuration
-└── .gitignore          # Git ignore rules
-```
+## Getting Help:
 
-- **src/** is where you write your game code, organized by purpose (scenes, objects, systems, config, utils).
-- **dist/** is generated after running `npm run build` and contains the final optimized `index.html` to deploy to Farcade.
-- **scripts/** contains custom build and development scripts.
-- **index.html** (root) is the HTML template used by Vite during development, loads Phaser and Farcade SDK.
-- **vite.config.ts** and **tsconfig.json** configure the build and TypeScript environment.
-
-## Contributing
-
-Feel free to submit issues and enhancement requests. Follow these steps to contribute:
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+- Copy and paste any error output to your LLM.
+- Join the [Remix Discord Serve](https://discord.com/invite/a3bgdr4RC6) 
 
 ## License
 
