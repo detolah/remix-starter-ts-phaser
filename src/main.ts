@@ -1,5 +1,5 @@
 import { GameScene } from "./scenes/GameScene"
-import { initializeFarcadeSDK } from "./utils/FarcadeUtils"
+import { initializeFarcadeSDK } from "./utils/RemixUtils"
 import GameSettings from "./config/GameSettings"
 
 const canvas = document.getElementById("gameCanvas") as HTMLCanvasElement

@@ -1,5 +1,3 @@
-import { GameScene } from "../scenes/GameScene"
-
 // Function to check if running inside the Farcade iframe environment
 export function isFarcadeEnvironment(): boolean {
   try {
