@@ -4,7 +4,7 @@
   "description": "GAME_NAME game for Farcade platform",
   "type": "module",
   "scripts": {
-    "setup": "node scripts/setup.js",
+    "remix-setup": "node scripts/setup.js",
     "dev": "node scripts/dev-server.js",
     "dev:3001": "node scripts/dev-server.js 3001",
     "dev:any": "node scripts/dev-server.js 0",

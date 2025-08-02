@@ -48,13 +48,14 @@ git clone https://github.com/InsideTheSim/remix-starter-ts-phaser my-game-name
 cd my-game-name
 
 # Option B: Download as ZIP
-# Download the ZIP file from GitHub, extract it, and open Terminal/Command Prompt in that folder. Donwnload available at:
+# Download the ZIP file from GitHub, extract it, and open Terminal/Command Prompt in that folder. 
+# Downnload available at:
 https://github.com/InsideTheSim/remix-starter-ts-phaser
 ```
 
 ### Step 2: Run Setup (IMPORTANT - Only Run Once!)
 ```bash
-npm run setup
+npm run remix-setup
 ```
 
 **What this does:**
@@ -181,7 +182,7 @@ your-game/
 ## Available Commands
 
 ```bash
-npm run setup    # ⚠️ ONLY RUN ONCE - Sets up fresh project
+npm run remix-setup    # ⚠️ ONLY RUN ONCE - Sets up fresh project
 npm run dev      # Start development server (most common)
 npm run dev:3001 # Start server on port 3001 (if 3000 is busy)
 npm run dev:any  # Start server on random available port
@@ -206,7 +207,7 @@ npm run preview  # Preview the built game locally
 - Install Node.js from [nodejs.org](https://nodejs.org)
 - Restart your terminal after installation
 
-**"npm run setup fails"**
+**"npm run remix-setup fails"**
 - Make sure you're in the correct folder (should contain `package.json`)
 - Check that the `.is_fresh` file exists (if missing, you may have already run setup)
 
