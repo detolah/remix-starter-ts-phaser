@@ -9,6 +9,10 @@ const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.WEBGL, // Using WebGL for shader support
   width: GameSettings.canvas.width,
   height: GameSettings.canvas.height,
+  scale: {
+    mode: Phaser.Scale.FIT,
+    parent: "gameContainer",
+  },
   canvas: canvas,
   backgroundColor: "#111111",
   scene: [GameScene],
