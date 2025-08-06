@@ -1,15 +1,14 @@
 /**
  * Game Settings for GAME_NAME
- * Centralized configuration for all tunable game parameters
+ * Legacy file - use GameConstants.ts for all game configuration
+ * This file is kept for backwards compatibility
  */
 
-export const GameSettings = {
-  debug: true,
+import GameConstants from './GameConstants'
 
-  canvas: {
-    width: 1000,
-    height: 1800,
-  },
+export const GameSettings = {
+  debug: GameConstants.debug.enabled,
+  canvas: GameConstants.canvas,
 }
 
 export default GameSettings
