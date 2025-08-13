@@ -22,6 +22,16 @@ export interface CollisionResult {
   points: number
 }
 
+export interface CollisionData {
+  contactX: number
+  contactY: number
+  impactAngle: number
+  normalX: number
+  normalY: number
+  isLeftEdge: boolean
+  impactSpeed: number
+}
+
 
 export interface ScoreData {
   score: number

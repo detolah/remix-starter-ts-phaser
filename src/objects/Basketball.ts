@@ -5,8 +5,8 @@ export class Basketball {
   private data: BasketballType
 
   constructor(scene: Phaser.Scene, x: number = 150, y: number = GameSettings.canvas.height / 2) {
-    const radius = 30
-    const ball = scene.add.circle(x, y, radius, 0xff8c00)
+    const radius = 45 // Increased size from 30 to 45
+    const ball = scene.add.circle(x, y, radius, 0xff8c42)
     ball.setStrokeStyle(3, 0x000000)
     
     this.data = {

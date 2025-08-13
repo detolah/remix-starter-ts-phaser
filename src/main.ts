@@ -14,10 +14,14 @@ const config: Phaser.Types.Core.GameConfig = {
     parent: "gameContainer",
   },
   canvas: canvas,
-  backgroundColor: "#111111",
+  backgroundColor: "#ffffff",
   scene: [GameScene],
   physics: {
     default: "arcade",
+    arcade: {
+      fps: 120,
+      timeScale: 1,
+    },
   },
   // Target frame rate
   fps: {
